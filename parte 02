@@ -1,0 +1,116 @@
+class Program
+{
+struct regfunc
+{
+public int regisfunc;
+public string nome;
+public string cargo;
+public double salario;
+
+    }
+
+   
+    static void valida(int ref n, int max)
+    {
+        while (n < 1 || n > max)
+        {
+        Console.WriteLine("Quantidades de funcionarios:");
+        n = int.Parse(Console.ReadLine());
+        }
+    }
+    static void Cadastro( regfunc []  vfunc, int n)
+      {
+        for (int i = 0; i < n; i++)
+        { 
+        Console.WriteLine("***CADASTRAR FUNCIONARIO***:");
+
+        Console.WriteLine("Digite Numero Registro Funcionario :");
+        vfunc[i].regisfunc = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite o Nome:");
+        vfunc[i].nome = Console.ReadLine();
+
+        Console.WriteLine("Digite o Cargo:");
+        vfunc[i].cargo = Console.ReadLine();
+
+        Console.WriteLine("Digite o Salario :");
+        vfunc[i].salario = double.Parse(Console.ReadLine());
+    }
+}
+
+    static void imprimirtodos( regfunc[] vfunc, int n)
+    {
+       for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine("\n********TODOS CADASTROS********");
+            Console.WriteLine("Registro Funcionario:" + vfunc[i].regisfunc);
+            Console.WriteLine("Nome:" + vfunc[i].nome);
+            Console.WriteLine("Cargo:" + vfunc[i].cargo);
+            Console.WriteLine("Salario :" + vfunc[i].salario);
+        }
+    }
+
+    static void aci5000(regfunc[] vfunc, int n)
+    {
+       for (int i = 0; i < n; i++)
+        {
+            if (vfunc[i].salario > 5000)
+            {
+                Console.WriteLine("\n********SALARIO ACIMA de R$5.000,00********");
+                Console.WriteLine("Nome:" + vfunc[i].nome);
+                Console.WriteLine("Cargo:" + vfunc[i].nome);
+                Console.WriteLine("Salario :" + vfunc[i].salario);
+            }
+        }
+     }
+
+    static void Main(string[] args)
+
+
+    {
+         
+        int op;
+        
+        
+        valida (ref n,20);
+
+
+        do
+        {
+
+         Console.Write("****Menus****");
+            Console.Write("\n1 - Cadastrar");
+            Console.Write("\n2 - Imprimir todos");
+            Console.Write("\n3 - Salario acima de R$5.000,00");
+            Console.Write("\n4 - Sair");
+
+            Console.WriteLine("\n Digite a opção");
+            op = int.Parse(Console.ReadLine());
+            while ((op < 1) || (op > 4))
+            {
+                Console.WriteLine("Opção invalidade, escolher outra operação de 1 a 4 conforme menu:");
+                op = int.Parse(Console.ReadLine());
+
+            }
+         
+            regfunc[] vfunc = new regfunc[1];
+          
+            switch (op)
+            {
+                                   
+            case 1:
+                    Cadastro(vfunc, n);
+                    break;
+            case 2:
+                    imprimirtodos(vfunc, n);
+                    break;
+            case 3:
+                    aci5000(vfunc, n);
+                    break;
+                   
+            }
+        }
+        while (op != 4);
+    }
+}
+}
